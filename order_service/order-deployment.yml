@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: order-deployment
+  labels:
+    app: order
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: order
+  template:
+    metadata:
+      labels:
+        app: order
+    spec:
+      containers:
+      - name: order
+        image: order.service.py
+        resources:
+          limits:
+            cpu: "500m"
+            memory: "512Mi"
+          requests:
+            cpu: "200m"
+            memory: "256Mi"
+        ports:
+        - containerPort: 80

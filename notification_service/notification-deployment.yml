@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: notification-deployment
+  labels:
+    app: notification
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: notification
+  template:
+    metadata:
+      labels:
+        app: notification
+    spec:
+      containers:
+      - name: notification
+        image: notification.service.py
+        resources:
+          limits:
+            cpu: "500m"
+            memory: "512Mi"
+          requests:
+            cpu: "200m"
+            memory: "256Mi"
+        ports:
+        - containerPort: 80
+

@@ -5,4 +5,4 @@ COPY . /order
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 EXPOSE 5002
-CMD [ "python3 ", "order.service.py" ]
+CMD [ "python3 ", "order.service.py" ]docker push dornubari/order.service.py:tagname
